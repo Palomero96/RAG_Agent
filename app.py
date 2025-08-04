@@ -1,16 +1,17 @@
 import streamlit as st
 import os, sys
 
+
 # Añade el directorio src al path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from rag_agent import RAGAgent
 
 # Atributos de la pagina
-st.set_page_config(layout="wide", page_title="Recommender System", page_icon="🎯")
+st.set_page_config(layout="wide", page_title="Magic Agent", page_icon="🃏")
 
 # Título llamativo
 st.title("Magic Agent")
-st.markdown("Haz una consulta y te recomendaremos libros o películas de forma personalizada.")
+st.markdown("Haz cualquier pregunta dentro del campo de conocimiento de Magic The Gathering.")
 
 RAG_AGENT = RAGAgent()
 
@@ -33,7 +34,7 @@ if prompt := st.chat_input("Escribe tu consulta aquí..."):
 
     # Mostramos un mensaje mientras se ejecuta un grafo
     with st.spinner("🤔 Estoy pensando..."):
-        result = RAG_AGENT.search_response({"input": prompt})
+        result = RAG_AGENT.search_response({"input": prompt,"chat_history": st.session_state.chat_history})
         full_response = result["output"]
 
     # Se muestra la respuesta del asistente
