@@ -41,7 +41,9 @@ class RAGAgent:
 
             Para responder las preguntas tienes disponible el chat de interaccion con el usuario:
             {chat_history}        
-                                               
+
+            El usuario tambien puede subir un archivo relacionado con el campo de conocimiento. En el caso de que lo haga tendras a continuación la transformación a texto del archivo:
+            {uploaded_text}                          
             """)
 
     def search_response(self,  state) -> dict:
@@ -52,11 +54,11 @@ class RAGAgent:
             f"{msg['role'].capitalize()}: {msg['content']}" 
             for msg in state['chat_history']
         )
-        chat_history_str = re.sub(r'<[^>]+>', '', chat_history_str).strip()
+        #chat_history_str = re.sub(r'<[^>]+>', '', chat_history_str).strip()
         state['chat_history'] = chat_history_str 
 
         # Genera el texto del prompt
-        prompt_text = self.prompt.format(input=state['input'],chat_history=state['chat_history'])
+        prompt_text = self.prompt.format(input=state['input'],chat_history=state['chat_history'],uploaded_text=state['uploaded_text'])
         # Pasa el prompt al LLM y devuelve la respuesta
         response = self.llm.invoke(prompt_text)
         # Devolvemos la respuesta
