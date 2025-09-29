@@ -1,1 +1,1 @@
-, featuring a complete implementation with graphical interface for document upload and intelligent querying. This system enhances large language models with external knowledge retrieval for accurate, context-aware responses.
+Advanced Research on Retrieval-Augmented Generation (RAG) for AI agents, featuring a complete implementation with graphical interface for document upload and intelligent querying. This system enhances large language models with external knowledge retrieval for accurate, context-aware responses.
