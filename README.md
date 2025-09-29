@@ -1,0 +1,1 @@
+, featuring a complete implementation with graphical interface for document upload and intelligent querying. This system enhances large language models with external knowledge retrieval for accurate, context-aware responses.
